@@ -17,6 +17,7 @@ class Instagram extends StatelessWidget {
       splitScreenMode: true,
       builder:
           (context, child) => MaterialApp(
+            theme: ThemeData.dark(),
             debugShowCheckedModeBanner: false,
             home: HomeScreen(),
           ),
