@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:instgram/features/home/presentation/screen/home_screen.dart';
+import 'package:instgram/features/user/presentation/screens/user_screen.dart';
 
 void main() {
   runApp(Instagram());
@@ -19,7 +20,7 @@ class Instagram extends StatelessWidget {
           (context, child) => MaterialApp(
             theme: ThemeData.dark(),
             debugShowCheckedModeBanner: false,
-            home: HomeScreen(),
+            home: UserScreen(),
           ),
     );
   }

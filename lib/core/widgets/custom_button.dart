@@ -17,7 +17,9 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
-        overlayColor: WidgetStateProperty.all(Colors.pinkAccent),
+        overlayColor: WidgetStateProperty.all(
+          Colors.pinkAccent.withValues(alpha: 0.1),
+        ),
         backgroundColor: WidgetStateProperty.all(color),
         side: WidgetStateProperty.all(BorderSide(style: BorderStyle.none)),
       ),
