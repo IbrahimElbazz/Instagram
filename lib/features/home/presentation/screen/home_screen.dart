@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:instgram/core/network/api_constant.dart';
 import 'package:instgram/core/widgets/custom_button.dart';
 import 'package:instgram/core/widgets/custom_text_field.dart';
+import 'package:instgram/features/user/presentation/screens/user_screen.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:http/http.dart' as http;
 
@@ -17,6 +18,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   Map? data;
+
+  bool isLoading = false;
   TextEditingController userNameController = TextEditingController();
   @override
   void dispose() {
@@ -24,7 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
+  // get info
   Future<void> getInfo({required String userName}) async {
+    isLoading = true;
     final uri =
         'https://social-api4.p.rapidapi.com/v1/info?username_or_id_or_url=$userName';
     // parse uri to url => http understand
@@ -40,7 +45,20 @@ class _HomeScreenState extends State<HomeScreen> {
     final json = jsonDecode(response.body) as Map;
     final result = json['data'] as Map;
     setState(() {
+      isLoading = true;
       data = result;
+    });
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return UserScreen(userData: data as Map);
+        },
+      ),
+    ).then((value) {
+      setState(() {
+        isLoading = false;
+      });
     });
 
     response.statusCode == 200
@@ -87,9 +105,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(),
                 CustomButton(
+                  isLoading: isLoading,
                   text: 'Send',
                   onTap: () {
-                    getInfo(userName: userNameController.text);
+                    if (userNameController.text.isEmpty ||
+                        userNameController.text == "") {
+                      return;
+                    } else {
+                      getInfo(userName: userNameController.text);
+                    }
                   },
                   color: Colors.white,
                   colorText: Colors.black,

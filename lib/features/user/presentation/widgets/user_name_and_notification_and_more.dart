@@ -10,9 +10,16 @@ class UserNameAndNotificationAndMore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
       child: Row(
         children: [
+          GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: Icon(Icons.arrow_back_ios_rounded, color: Colors.grey),
+          ),
+          GapW(width: 20),
           Text(
             userName,
             style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),

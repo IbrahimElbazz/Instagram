@@ -1,9 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:instgram/features/home/presentation/screen/home_screen.dart';
-import 'package:instgram/features/user/presentation/screens/user_screen.dart';
 
 void main() {
+  ErrorWidget.builder = (FlutterErrorDetails flutterErrorDetails) {
+    return Center(
+      child: SizedBox(
+        height: 100.h,
+        width: 100.w,
+        child: CupertinoActivityIndicator(),
+      ),
+    );
+  };
   runApp(Instagram());
 }
 
@@ -20,7 +29,7 @@ class Instagram extends StatelessWidget {
           (context, child) => MaterialApp(
             theme: ThemeData.dark(),
             debugShowCheckedModeBanner: false,
-            home: UserScreen(),
+            home: HomeScreen(),
           ),
     );
   }
