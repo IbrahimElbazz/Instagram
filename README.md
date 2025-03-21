@@ -1,16 +1,6 @@
 # instgram
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![2](https://github.com/user-attachments/assets/20687f7a-415b-4172-92d6-94d57fc0ccdc)
+![1](https://github.com/user-attachments/assets/15a9d7d4-cbaa-4234-81d1-c716e8a97fc3)
+![4](https://github.com/user-attachments/assets/22a41c27-42e6-4d20-b609-8f89f3ecc961)
+![3](https://github.com/user-attachments/assets/d80ddaa0-9f62-425a-869f-cee7680d35d5)
