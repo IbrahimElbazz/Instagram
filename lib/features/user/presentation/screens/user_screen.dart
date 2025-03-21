@@ -205,12 +205,12 @@ class _UserScreenState extends State<UserScreen>
                   padding: EdgeInsets.symmetric(horizontal: 15.w),
                   child: Row(
                     children: [
-                      Expanded(
-                        child: Text(
-                          widget.userData['biography'],
-                          style: TextStyle(color: Colors.grey, fontSize: 10.sp),
-                        ),
-                      ),
+                      // Expanded(
+                      //   child: Text(
+                      //     widget.userData['biography'],
+                      //     style: TextStyle(color: Colors.grey, fontSize: 10.sp),
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
@@ -286,21 +286,50 @@ class _UserScreenState extends State<UserScreen>
                       final reel = reels[index];
                       return GestureDetector(
                         onTap: () {
-                          print(reel['video_url']);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
                               builder: (context) {
-                                return VideoScreen(videoUrl: reel['video_url']);
+                                return VideoScreen(
+                                  userName: widget.userData['full_name'],
+                                  image: widget.userData['profile_pic_url'],
+                                  videoUrl: reel['video_url'],
+                                  videoData: reel,
+                                );
                               },
                             ),
                           );
                         },
-                        child: Image.network(reel['thumbnail_url']),
+                        child: Stack(
+                          children: [
+                            Image.network(reel['thumbnail_url']),
+                            Positioned(
+                              bottom: 10.h,
+                              left: 10.w,
+                              child: Row(
+                                spacing: 5.w,
+                                children: [
+                                  Icon(
+                                    Icons.visibility_outlined,
+                                    color: Colors.white,
+                                    size: 15.sp,
+                                  ),
+                                  Text(
+                                    formatCount(reel['play_count']),
+                                    style: TextStyle(
+                                      fontSize: 15.sp,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       );
                     },
                   ),
-                  Text(''),
                 ],
               ),
             ),

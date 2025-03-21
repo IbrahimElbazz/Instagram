@@ -29,7 +29,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // get info
   Future<void> getInfo({required String userName}) async {
-    isLoading = true;
+    setState(() {
+      isLoading = true;
+    });
     final uri =
         'https://social-api4.p.rapidapi.com/v1/info?username_or_id_or_url=$userName';
     // parse uri to url => http understand
@@ -45,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final json = jsonDecode(response.body) as Map;
     final result = json['data'] as Map;
     setState(() {
-      isLoading = true;
+      isLoading = false;
       data = result;
     });
     Navigator.push(
